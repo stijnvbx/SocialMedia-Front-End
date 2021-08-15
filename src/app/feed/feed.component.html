@@ -1,0 +1,39 @@
+<div class="card">
+    <mat-card class="post">
+        <form [formGroup]="postingForm" (ngSubmit)="submitPost()">
+            <div id="title-with-button">
+                <p class="title">post een item</p>
+                <button mat-raised-button color="primary" type="submit">
+                    <mat-icon aria-hidden="false" aria-label="comment">send</mat-icon>
+                </button>
+            </div>
+
+            <hr />
+            <mat-form-field id="text" appearance="outline">
+                <textarea matInput id="email" type="text" formControlName="text"></textarea>
+            </mat-form-field>
+        </form>
+    </mat-card>
+</div>
+<div class="card" *ngFor="let post of posts">
+    <mat-card class="post">
+        <div id="title-with-button">
+            <p class="title">{{post.user.firstName}} {{post.user.lastName}}</p>
+            <mat-menu #menu="matMenu">
+                <button (click)="deletePost(post.postID!.toString())" mat-menu-item>delete</button>
+                <button mat-menu-item>edit</button>
+            </mat-menu>
+        </div>
+        <hr />
+        <p class="text">{{post.text}}</p>
+        <hr />
+        <ul class="buttonlist">
+            <li>
+                <button mat-icon-button (click)="toggleLike(post.postID!.toString())">
+                    <mat-icon [ngClass]="{'liked': didILikeIt(post.likes!)}" aria-hidden="false" aria-label="like">like</mat-icon>
+                </button>
+
+            </li>
+        </ul>
+    </mat-card>
+</div>

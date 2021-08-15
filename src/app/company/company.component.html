@@ -1,0 +1,20 @@
+<div class="card">
+    <mat-card id="createCompany">
+        <form #companyform="ngForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input class="form-control" matInput id="Name" name="Name" type="text" required [(ngModel)]="company.Name">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input class="form-control" matInput id="Description" name="Description" type="text" required [(ngModel)]="company.Description">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input class="form-control" matInput id="Location" name="Location" type="text" required [(ngModel)]="company.Location">
+              </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Create a company</button>
+        </form>
+        
+    </mat-card>
+</div>
